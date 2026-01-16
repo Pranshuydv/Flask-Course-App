@@ -1,0 +1,79 @@
+{% extends 'Base.html' %}
+
+{% block content %}
+  <!-- Navbar -->
+  <nav class="bg-white shadow">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <!-- Logo -->
+      <h1 class="text-xl font-bold text-blue-600">MyWebsite</h1>
+
+      <!-- Nav Links -->
+      <ul class="flex gap-6 text-gray-700 items-center">
+        <li>
+          <a href="/" class="hover:text-blue-600 font-medium">Home</a>
+        </li>
+
+        <li>
+          <a href="/course" class="hover:text-blue-600 font-medium">Courses</a>
+        </li>
+
+        {% if session.get('user_id') %}
+          <!-- LOGGED IN USER -->
+
+          <li>
+            <a href="/course/create" class="hover:text-blue-600 font-medium">Create Course</a>
+          </li>
+
+          <li>
+            <a href="/dashboard" class="hover:text-blue-600 font-medium">Dashboard</a>
+          </li>
+
+          <li>
+            <a href="/logout" class="px-4 py-1 bg-red-600 text-white rounded hover:bg-red-700">Logout</a>
+          </li>
+        {% else %}
+          <!-- GUEST USER -->
+
+          <li>
+            <a href="/register" class="px-4 py-1 bg-blue-600 text-white rounded hover:bg-blue-700">Register</a>
+          </li>
+
+          <li>
+            <a href="/login" class="px-4 py-1 border border-blue-600 text-blue-600 rounded hover:bg-blue-50">Login</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="bg-blue-600 text-white py-20">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold mb-4">Welcome to My Website</h2>
+      <p class="text-lg mb-6">Simple, clean and modern homepage using Tailwind CSS</p>
+      <a href="/course" class="bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-gray-200">Explore Courses</a>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+      <div class="bg-white p-6 rounded shadow text-center">
+        <h3 class="text-xl font-semibold mb-2">Fast</h3>
+        <p class="text-gray-600">Optimized and lightweight design.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded shadow text-center">
+        <h3 class="text-xl font-semibold mb-2">Responsive</h3>
+        <p class="text-gray-600">Looks great on all devices.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded shadow text-center">
+        <h3 class="text-xl font-semibold mb-2">Easy</h3>
+        <p class="text-gray-600">Very easy to customize.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-gray-800 text-white text-center py-4">© 2025 MyWebsite. All rights reserved.</footer>
+{% endblock %}
